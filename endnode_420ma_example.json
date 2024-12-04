@@ -1,0 +1,268 @@
+[
+    {
+        "id": "b8939b6d8dda5c38",
+        "type": "tab",
+        "label": "EndNode 4-20mA Example",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e748227717d1a963",
+        "type": "group",
+        "z": "b8939b6d8dda5c38",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "9b482dfa51a27c65",
+            "c4122250458ad048"
+        ],
+        "x": 534,
+        "y": 299,
+        "w": 432,
+        "h": 142
+    },
+    {
+        "id": "63130894d3a55fdb",
+        "type": "group",
+        "z": "b8939b6d8dda5c38",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "6966003bfc36520b",
+            "f13dc22483fd2696"
+        ],
+        "x": 1014,
+        "y": 299,
+        "w": 472,
+        "h": 142
+    },
+    {
+        "id": "f7dea52a82065166",
+        "type": "group",
+        "z": "b8939b6d8dda5c38",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "466b5b61fa269d89",
+            "ce1f5a90e8af3f9c",
+            "98364da741b430a9",
+            "6439d7d72cca2ba8",
+            "815c795c2e1e7762",
+            "1936a330c5307f7a"
+        ],
+        "x": 54,
+        "y": 259,
+        "w": 432,
+        "h": 202
+    },
+    {
+        "id": "6966003bfc36520b",
+        "type": "ncd-gateway-node",
+        "z": "b8939b6d8dda5c38",
+        "g": "63130894d3a55fdb",
+        "name": "",
+        "connection": "",
+        "unknown_devices": true,
+        "outputs": 2,
+        "x": 1150,
+        "y": 400,
+        "wires": [
+            [
+                "e3df83fd38dbf123"
+            ],
+            [
+                "e3df83fd38dbf123"
+            ]
+        ]
+    },
+    {
+        "id": "466b5b61fa269d89",
+        "type": "function",
+        "z": "b8939b6d8dda5c38",
+        "g": "f7dea52a82065166",
+        "name": "Set C1 4mA Cmd",
+        "func": "msg.payload = {};\nmsg.payload.data = [0xAA, 0x06, 0x35, 0x21, 0x01, 0x01, 0x0A, 0x3E, 0x50];\n// msg.payload.address = \"00:13:a2:00:41:db:8c:15\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "c4122250458ad048"
+            ]
+        ]
+    },
+    {
+        "id": "ce1f5a90e8af3f9c",
+        "type": "inject",
+        "z": "b8939b6d8dda5c38",
+        "g": "f7dea52a82065166",
+        "name": "4mA",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "466b5b61fa269d89"
+            ]
+        ]
+    },
+    {
+        "id": "98364da741b430a9",
+        "type": "function",
+        "z": "b8939b6d8dda5c38",
+        "g": "f7dea52a82065166",
+        "name": "Set C1 20mA Cmd",
+        "func": "msg.payload = {};\nmsg.payload.data = [0xAA, 0x06, 0x35, 0x21, 0x01, 0x01, 0x33, 0x32, 0x6D];\n// msg.payload.address = \"00:13:a2:00:41:db:8c:15\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "c4122250458ad048"
+            ]
+        ]
+    },
+    {
+        "id": "6439d7d72cca2ba8",
+        "type": "inject",
+        "z": "b8939b6d8dda5c38",
+        "g": "f7dea52a82065166",
+        "name": "20mA",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "98364da741b430a9"
+            ]
+        ]
+    },
+    {
+        "id": "815c795c2e1e7762",
+        "type": "comment",
+        "z": "b8939b6d8dda5c38",
+        "g": "f7dea52a82065166",
+        "name": "Channel 1",
+        "info": "",
+        "x": 140,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9b482dfa51a27c65",
+        "type": "comment",
+        "z": "b8939b6d8dda5c38",
+        "g": "e748227717d1a963",
+        "name": "Change address to match your endnode controller",
+        "info": "",
+        "x": 750,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c4122250458ad048",
+        "type": "change",
+        "z": "b8939b6d8dda5c38",
+        "g": "e748227717d1a963",
+        "name": "Assign Target",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.address",
+                "pt": "msg",
+                "to": "00:13:a2:00:41:db:8c:15",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 400,
+        "wires": [
+            [
+                "6966003bfc36520b"
+            ]
+        ]
+    },
+    {
+        "id": "e3df83fd38dbf123",
+        "type": "debug",
+        "z": "b8939b6d8dda5c38",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f13dc22483fd2696",
+        "type": "comment",
+        "z": "b8939b6d8dda5c38",
+        "g": "63130894d3a55fdb",
+        "name": "Edit the Wireless Gateway to assign your serial device",
+        "info": "",
+        "x": 1260,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "1936a330c5307f7a",
+        "type": "comment",
+        "z": "b8939b6d8dda5c38",
+        "g": "f7dea52a82065166",
+        "name": "4-20mA Triggers",
+        "info": "",
+        "x": 160,
+        "y": 300,
+        "wires": []
+    }
+]
